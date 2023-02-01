@@ -1,0 +1,5 @@
+gym
+numpy
+keras
+keras-rl2
+tensorflow
