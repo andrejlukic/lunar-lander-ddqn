@@ -163,6 +163,8 @@ def plotLearning(x, scores, epsilons, filename, lines=None):
 env = gym.make("LunarLander-v2")
 n_games = 100
 agent = SingleQAgent(gamma=0.99, epsilon=1.0, lr=0.0005, mem_size=1000000, batch_size=64, epsilon_end=0.01)
+agent.load_saved_model('ddqn_model.h5')
+
 scores = []
 eps_history = []
 
