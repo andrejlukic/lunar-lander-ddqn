@@ -1,0 +1,8 @@
+m0;libTFK algDQN mem200000 1NN(64,64) bat64 epi250 lea4 N/A
+m1;libT algDDQN mem200000 2NN(64,64) bat128 epi1500 lea4 rep100
+m2;libT algDDQN mem2000000 2NN(64,64) bat128 epi900 lea4 rep100
+m3;libT algDDQN mem200000 2NN(256,256) bat128 epi1500 lea4 rep100
+m4;libT algDDQN mem200000 2NN(128,128) bat128 epi1500 lea4 rep100
+m5;libT algDDQN mem500000 2NN(128,128) bat128 epi1500 lea4 rep100
+m6;libT algDDQN mem200000 2NN(512,512) bat128 epi1500 lea4 rep100
+m7;libT algDDQN mem200000 2NN(64,64,64) bat128 epi1500 lea4 rep100
