@@ -1,5 +1,8 @@
-gym
+gymnasium
+gymnasium[box2d]
 numpy
 keras
 keras-rl2
+torch
 tensorflow
+moviepy
