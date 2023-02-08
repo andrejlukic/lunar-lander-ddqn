@@ -119,29 +119,25 @@ class DoubleQAgent(Agent):
         # 1. Choose a sample from past transitions:
         states, actions, rewards, new_states, terminals = self.memory.random_sample(self.batch_size)
         
-        ## Compute and minimize the loss
-        ### Extract next maximum estimated value from target network
-        q_targets_next = self.q_func_target(new_states).detach().max(1)[0].unsqueeze(1)
-        ### Calculate target value from bellman equation
-        q_targets = rewards + self.gamma * q_targets_next * (1 - terminals)
-        ### Calculate expected value from local network
-        q_expected = self.q_func(states).gather(1, actions)
+        # 2. Update the target values
+        q_next = self.q_func_target(new_states).detach().max(1)[0].unsqueeze(1)
+        q_updated = rewards + self.gamma * q_next * (1 - terminals)
+        q = self.q_func(states).gather(1, actions)
         
-        ### Loss calculation (we used Mean squared error)
-        loss = F.mse_loss(q_expected, q_targets)
+        # 3. Update the main NN
+        loss = F.mse_loss(q, q_updated)
         self.optimizer.zero_grad()
         loss.backward()
         self.optimizer.step()
-
-        # ------------------- update target network ------------------- #
-        # self.soft_update(self.QNN_local, self.QNN_target, TAU) 
         
-        # 5. Reduce the exploration rate
-        self.reduce_epsilon()
-        
+        # 4. Update the target NN (every N-th step)
         if self.memory.trans_counter % self.replace_q_target == 0: # wait before you start learning
             for target_param, local_param in zip(self.q_func_target.parameters(), self.q_func.parameters()):
                 target_param.data.copy_(local_param.data)
+                
+        # 5. Reduce the exploration rate
+        self.reduce_epsilon()
+
 
 
     def save_model(self, path):
