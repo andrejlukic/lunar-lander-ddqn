@@ -59,26 +59,25 @@ lander crashes, flies outside of the viewport of stops moving.
 # Background
 
 The lunar lander environment features a relatively big, continuous state
-space. This already narrows down the selection of the appropriate
-algorithms to those families of algorithms that don't assume the perfect
-knowledge of the environment, e.g. dynamic programming would most likely
-not be feasible since it would not be possible to efficiently estimate
+space. This narrows down the selection of the appropriate
+algorithms to the families of algorithms that don't assume the perfect
+knowledge of the environment, e.g. dynamic programming would not
+not be feasible in this case since it would not be possible to efficiently estimate
 the state-value function. Monte-Carlo methods on the other hand don't
 require the perfect knowledge of the environment and learn from the
-agent's experiences. They would therefore be a more suitable candidate
+agent's experiences. They would be a more suitable candidate
 for a large state space. However a drawback of Monte Carlo methods is
 that they require a full completed episode to learn and so the
-convergence might be too slow to efficiently solve the problem.
-Additionally they need to store the action-value function and the
-complete list of returns for every episode in memory and would
+convergence is slower. Additionally they need to store the action-value function and the
+complete list of returns for every episode which would
 potentially require lots of space. Another family of methods are the
-Temporal-difference methods which solve the first drawback of the
+temporal-difference methods which solve the first drawback of the
 Monte-Carlo methods and can learn at every step since they make use of
 bootstrapping while still relying on agent's experiences like the
-Monte-Carlo methods. Therefore the agent can improve even before
+Monte-Carlo methods. The agent can improve even before
 reaching the goal state which is an important aspect for environments
 like Lunar Lander where an agent might take many steps before reaching a
-goal. Q-learning is one such algorithm, that is also is an off-policy
+goal. Q-learning is one such algorithm. It is an off-policy
 method so it isn't limited to learning the policy it's following while
 learning the optimal policy. The speed of convergence of the Q-learning
 can be further improved up by remembering past state transitions and
@@ -100,12 +99,12 @@ networks.
 
 # Method
 
-To solve the Lunar Lander problem two very similar deep RL methods were
+To solve the Lunar Lander problem two similar deep RL methods were
 used. Deep Q-learning (DQN) is essentially a Q-learning algorithm with
 an approximation of the Q-value function that receives a state as an
-input and returns actions with their q-values instead of the old tabular
+input and returns actions with their q-values instead of the tabular
 Q-value function that simply maps a state-action pair to a Q value. A
-neural network is used here as a function approximator. In the case of a
+neural network is used as a function approximator. In the case of a
 DQN a single neural network is used for two important steps, choosing
 agent's actions as well as for evaluating the target Q values. This can
 lead to a so-called maximisation bias which means that a maximum over
@@ -126,7 +125,7 @@ robustly.
 # Results
 
 Both algorithms (DQN and DDQN) converged after a couple of hundred
-episodes (the point of convergence is the when the average of the last
+episodes (the point of convergence is considered when the average of the last
 100 episodes exceeds 200 points). The best performing approach out of
 those tested was a DDQN with a neural network featuring two hidden
 layers of size 256 neurons and RELU activation function, batch size of
@@ -164,16 +163,6 @@ seems that the width of 256 neurons gives the best performance.
 ![NN with too little neurons seem to converge too
 late](./docs/tex/figures/nnwidth.png)
 
-# Discussion
-
-After the technical issues were resolved (more on this in the last
-section) the problem was easily solved using the DDQN / DQN methods.
-Using the trained agent to repeatedly land the rocket shows impressive
-results and even when the landing is not perfect the rocket usually does
-not end up crashing.
-
-# Future Work
-
 Since the Lunar Lander is not such a complex problem it would be
 interesting to compare the deep RL methods to the simpler methods from
 the family of the temporal difference algorithms and see how much faster
@@ -183,7 +172,7 @@ parameter tuning and determine what the best neural network architecture
 is e.g. would a convolutional network or a duelling network perform
 better.
 
-# Personal Experience
+# Some technical notes ...
 
 The implementation was first written for TensorFlow and Keras which
 performed poorly. The combination of TensorFlow / Keras and the
