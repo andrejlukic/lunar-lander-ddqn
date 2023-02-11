@@ -15,7 +15,7 @@ site](https://gymnasium.farama.org/environments/box2d/lunar_lander/) ).
 
 Video of the best performing agent landing the rocket on the moon | Video of an untrained agent landing the rocket on the moon
 :-: | :-:
-<video src='./video/agentm5.mov' width=180></video> | <video src='./video/agentuntrained.mov' width=180></video>
+<video src='https://youtu.be/csrk1gOcRPU' width=180></video> | <video src='https://youtu.be/Jb_1M_E6ofE' width=180></video>
 
 In the simulation, the spacecraft has a main engine and two lateral
 boosters that can be used to control its descent and the orientation of
