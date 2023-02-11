@@ -2,7 +2,7 @@
 
 ## Problem Definition
 
-The problem of this assignment is called the Lunar Lander and simulates landing a small rocket on the moon surface. The
+The Lunar Lander environment simulates landing a small rocket on the moon surface. The
 environment for testing the algorithm is freely available on the
 [Gymnasium](https://gymnasium.farama.org) web site (it's an actively
 maintained fork of the original [OpenAI
