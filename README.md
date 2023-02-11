@@ -12,6 +12,11 @@ The [Lunar Lander](https://gymnasium.farama.org/environments/box2d/lunar_lander/
 is a classic rocket trajectory optimisation problem ([comprehensive
 environment description is found on the gymnasium web
 site](https://gymnasium.farama.org/environments/box2d/lunar_lander/) ).
+
+Video of the best performing agent landing the rocket on the moon | Video of an untrained agent landing the rocket on the moon
+:-: | :-:
+<video src='./video/agentm5.mov' width=180></video> | <video src='./video/agentuntrained.mov' width=180></video>
+
 In the simulation, the spacecraft has a main engine and two lateral
 boosters that can be used to control its descent and the orientation of
 the spacecraft. The spacecraft is subject to the moon's gravitational
@@ -134,11 +139,9 @@ point onwards.). The final result of the agent landing the rocket using
 this model can be seen by playing the following videos (trained vs
 untrained agent):
 
--   [Video of the best performing agent landing the rocket on the moon
-    (experiment M5) ](https://youtu.be/csrk1gOcRPU)
-
--   [Video of an untrained agent landing the rocket on the moon
-    ](https://youtu.be/Jb_1M_E6ofE)
+Video of the best performing agent landing the rocket on the moon | Video of an untrained agent landing the rocket on the moon
+:-: | :-:
+<video src='./video/agentm5.mov' width=180></video> | <video src='./video/agentuntrained.mov' width=180></video>
 
 The basic DQN compared fairly well with the DDQN and the version with
 two 64 neuron layers converged at episode 461:
