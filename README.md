@@ -1,26 +1,14 @@
----
-author:
-- |
-  Andrej Lukic\
-  Department of Computer Science\
-  University of Bath\
-  Bath, BA2 7AY\
-  `al2274@bath.ac.uk`\
-title: RL Lunar Lander
----
+# Solving Lunar Lander with (D)DQN
 
-# Problem Definition
+## Problem Definition
 
-The problem chosen for this assignment is the Lunar Lander problem
-because landing a small rocket on the moon is a bit correlated with my
-interest in flight controllers used in custom made drones. The
+The problem of this assignment is called the Lunar Lander and simulates landing a small rocket on the moon surface. The
 environment for testing the algorithm is freely available on the
 [Gymnasium](https://gymnasium.farama.org) web site (it's an actively
 maintained fork of the original [OpenAI
 Gym](https://github.com/openai/gym) developed by Oleg Klimov.
 
-The [Lunar
-Lander](https://gymnasium.farama.org/environments/box2d/lunar_lander/)
+The [Lunar Lander](https://gymnasium.farama.org/environments/box2d/lunar_lander/)
 is a classic rocket trajectory optimisation problem ([comprehensive
 environment description is found on the gymnasium web
 site](https://gymnasium.farama.org/environments/box2d/lunar_lander/) ).
@@ -35,11 +23,8 @@ force applied to its center of mass. The environment has 4 discrete
 actions:
 
 -   0: do nothing
-
 -   1: fire left orientation engine
-
 -   2: fire main engine
-
 -   3: fire right orientation engine
 
 The state is an 8-dimensional vector: the coordinates of the lander in x
@@ -54,16 +39,11 @@ For each step, the reward:
 
 -   is increased/decreased the closer/further the lander is to the
     landing pad.
-
 -   is increased/decreased the slower/faster the lander is moving.
-
 -   is decreased the more the lander is tilted (angle not horizontal).
-
 -   is increased by 10 points for each leg that is in contact with the
     ground.
-
 -   is decreased by 0.03 points each frame a side engine is firing.
-
 -   is decreased by 0.3 points each frame the main engine is firing.
 
 The episode receive an additional reward of -100 or +100 points for
@@ -161,14 +141,13 @@ untrained agent):
     ](https://youtu.be/Jb_1M_E6ofE)
 
 The basic DQN compared fairly well with the DDQN and the version with
-two 64 neuron layers converged at episode 461
-[2](#fig:2){reference-type="ref" reference="fig:2"}.
+two 64 neuron layers converged at episode 461:
 
 ![DDQN, 200000 experiences, NN(256,256), batch size 128, 1500 episodes,
-learn every 4th step N/A](figures/m5.png){#fig:1 width="100%"}
+learn every 4th step N/A](./docs/tex/figures/m5.png)
 
 ![DQN, 200000 experiences, NN(64,64), batch size 64, 629 episodes, learn
-every 4th step N/A](figures/m0.png){#fig:2 width="100%"}
+every 4th step N/A](./docs/tex/figures/m0.png)
 
 The experiments showed that the network hidden layer width had a big
 impact on the speed of converging but the depth not so much. In the
@@ -180,7 +159,7 @@ performance however also increases the computational complexity and it
 seems that the width of 256 neurons gives the best performance.
 
 ![NN with too little neurons seem to converge too
-late](figures/nnwidth.png){#fig:3 width="100%"}
+late](./docs/tex/figures/nnwidth.png)
 
 # Discussion
 
